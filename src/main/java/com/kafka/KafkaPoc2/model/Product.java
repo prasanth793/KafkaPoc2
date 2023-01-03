@@ -45,6 +45,20 @@ public class Product {
         this.createdTimeStamp = createdTimeStamp;
     }
 
+    public Product(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public Product() {
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", createdTimeStamp=" + createdTimeStamp +
+                '}';
     }
 }
