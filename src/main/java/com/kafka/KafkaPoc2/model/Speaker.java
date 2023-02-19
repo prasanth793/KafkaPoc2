@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -91,5 +92,18 @@ public class Speaker {
 
     public void setSessions(List<Session> sessions) {
         this.sessions = sessions;
+    }
+
+    @Override
+    public String toString() {
+        return "Speaker{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", favourite=" + favourite +
+                ", company='" + company + '\'' +
+                ", twitterHandle='" + twitterHandle + '\'' +
+                ", sessions=" + sessions +
+                '}';
     }
 }

@@ -1,0 +1,3 @@
+Implementation of Kafka end-to-end
+Search for all Annotations in JPA and Mongo integrations
+All Flux and Mono methods

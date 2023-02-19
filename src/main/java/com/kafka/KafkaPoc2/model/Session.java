@@ -2,6 +2,7 @@ package com.kafka.KafkaPoc2.model;
 
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -19,12 +20,16 @@ public class Session {
     @Field("room_name")
     private String roomName;
 
-    public Session(int id, String sessionTitle, String eventYear, int speakerId, String roomName) {
+    @Transient
+    private Room room;
+
+    public Session(int id, String sessionTitle, String eventYear, int speakerId, String roomName, Room room) {
         this.id = id;
         this.sessionTitle = sessionTitle;
         this.eventYear = eventYear;
         this.speakerId = speakerId;
         this.roomName = roomName;
+        this.room = room;
     }
 
     public Session() {
@@ -68,5 +73,42 @@ public class Session {
 
     public void setRoomName(String roomName) {
         this.roomName = roomName;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+    public void build(){
+        Room room  = new Room(roomName);
+        setRoom(room);
+    }
+
+
+
+
+    //Inner Room Class
+    public class Room{
+        private String name;
+
+        public Room() {
+        }
+
+
+        public Room(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
     }
 }
